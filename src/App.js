@@ -13,6 +13,11 @@ const App = () => {
             const data = await response.json();
             setmovies(data.Search);
         }
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                searchmovie(searchterm);
+            }
+        }
 
         useEffect(() => {
         searchmovie('marvel')
@@ -26,6 +31,7 @@ const App = () => {
                     placeholder='secrch for movies'
                     value={searchterm}
                     onChange={(e) => setsearchterm(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     />
 
                     <img 
